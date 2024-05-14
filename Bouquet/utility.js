@@ -60,20 +60,16 @@ function isPointInsideCircle(posPoint, posCircle, r) {
 }
 
 function drawBouquet(flowers) {
-    drawStems(flowers);
+    //stems
+    for (let f in flowers) {
+        flowers[f].drawStem(new Coord(width / 2, height));
+    }
 
+    //flowers
     for (let f in flowers) {
         flowers[f].drawFlower();
     }
 
-}
-
-function drawStems(flowers) {
-    for (let f of flowers) {
-        stroke(0, 255, 0);
-        strokeWeight(2);
-        line(f.pos.x, f.pos.y, width / 2, height);
-    }
 }
 
 function setColors(colors, transparency) {

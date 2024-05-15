@@ -60,10 +60,7 @@ function isPointInsideCircle(posPoint, posCircle, r) {
 }
 
 function drawBouquet(flowers) {
-    //stems
-    for (let f in flowers) {
-        flowers[f].drawStem(new Coord(width / 2, height));
-    }
+    drawStems(flowers);
 
     //flowers
     for (let f in flowers) {
@@ -82,4 +79,30 @@ function setColors(colors, transparency) {
     colors[5] = [color(255, 255, 51, transparency), color(253, 191, 111)];
     colors[6] = [color(166, 86, 40, transparency), color(230, 171, 2)];
     colors[7] = [color(247, 129, 191, transparency), color(244, 204, 204)];
+}
+
+function drawStems(flowers) {
+    const stemColors = [color(0, 69, 41), color(0, 104, 55), color(35, 132, 67)];
+    randomSeed(1);
+    for (let f of flowers) {
+        stroke(random(stemColors));
+        strokeWeight(random(2, 3));
+        noFill();
+        bezier(f.pos.x, f.pos.y, f.pos.x + random(-50, 50), f.pos.y + 50, width / 2, height, width / 2, height + 50);
+    }
+}
+
+function showCircles() {
+    fill(255);
+    stroke(0);
+    strokeWeight(2);
+
+    circle(width / 2, height / 4, groupSize);
+    circle(width / 2.5, height / 2, groupSize);
+    circle(width * 1.5 / 2.5, height / 2, groupSize);
+    circle(width / 3.5, height / 3.5, groupSize);
+    circle(width * 4.25 / 6, height / 3.5, groupSize);
+    circle(width / 3.5, height * 2.5 / 3.5, groupSize);
+    circle(width * 4.25 / 6, height * 2.5 / 3.5, groupSize);
+    circle(width / 2, height * 3.5 / 5, groupSize);
 }

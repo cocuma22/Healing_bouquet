@@ -3,8 +3,12 @@ var scaleFlower = 0.15;
 var groupSize = 140;
 var colors = new Array(8);
 var bouquet;
-var frame
+var frame;
+var font;
 var groupFlowerCoordinates;
+var labelText;
+var textRef;
+var selectedGroupIndex;
 
 var dataLabels = [
   'Engaged in religious/spiritual activities',
@@ -21,6 +25,7 @@ var dataPercentages = [37.18, 76.49, 54.57, 55.14, 85.10, 62.12, 84.98, 74.58];
 
 function preload() {
   frame = loadImage('data/frame.png');
+  font = loadFont('data/ubuntu.ttf');
 }
 
 function setup() {
@@ -38,7 +43,7 @@ function setup() {
   new Coord(width / 2, height * 3.5 / 5) //bottom central
   ];
 
-  flowerGroups = computeFlowerGroups(dataPercentages); // [3, 7, 5, 5, 8, 6, 8, 7]
+  flowerGroups = computeFlowerGroups(dataPercentages); // [4, 8, 6, 6, 9, 7, 9, 8]
 
   setColors(colors, 210);
 
@@ -52,5 +57,6 @@ function draw() {
   showCircle(30);
   drawBouquet(bouquet);
   image(frame, 0, 0);
-
+  drawTitleFrame();
+  drawLabel();
 }

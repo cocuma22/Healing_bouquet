@@ -99,6 +99,13 @@ function showCircle(offset) {
     for (let i in groupFlowerCoordinates) {
         if (isInsideFlowerGroup(groupFlowerCoordinates[i])) {
             circle(groupFlowerCoordinates[i].getX(), groupFlowerCoordinates[i].getY(), groupSize + offset);
+            selectedGroupIndex = i;
+            labelText = dataLabels[selectedGroupIndex] + " - " + dataPercentages[selectedGroupIndex] + "%";
+            textRef = "Wellcome Global Monitor (2021) – processed by Our World in Data";
+            break;
+        } else {
+            labelText = "";
+            textRef = "";
         }
     }
 }
@@ -111,4 +118,32 @@ function isInsideFlowerGroup(center) {
         return true;
     }
     return false;
+}
+
+function drawTitleFrame() {
+    fill(255);
+    rectMode(CENTER);
+    stroke(14, 38, 63);
+    strokeWeight(3);
+    rect(width / 2, 35, 525, 40, 10);
+
+    noStroke();
+    fill(14, 38, 63);
+    textFont(font);
+    textSize(32);
+    textAlign(CENTER, CENTER);
+    text("Dealing with anxiety or depression", width / 2, 30);
+}
+
+function drawLabel() {
+    rectMode(CORNER);
+
+    fill(255);
+    textAlign(LEFT, TOP);
+    textSize(14);
+    text(labelText, 85, height - 160, 150);
+
+    fill(255);
+    textSize(9);
+    text(textRef, 85, height - 100, 150);
 }

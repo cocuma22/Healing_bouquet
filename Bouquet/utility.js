@@ -92,17 +92,23 @@ function drawStems(flowers) {
     }
 }
 
-function showCircles() {
-    fill(255);
-    stroke(0);
-    strokeWeight(2);
+function showCircle(offset) {
+    fill(255, 225, 0, 50);
+    noStroke();
 
-    circle(width / 2, height / 4, groupSize);
-    circle(width / 2.5, height / 2, groupSize);
-    circle(width * 1.5 / 2.5, height / 2, groupSize);
-    circle(width / 3.5, height / 3.5, groupSize);
-    circle(width * 4.25 / 6, height / 3.5, groupSize);
-    circle(width / 3.5, height * 2.5 / 3.5, groupSize);
-    circle(width * 4.25 / 6, height * 2.5 / 3.5, groupSize);
-    circle(width / 2, height * 3.5 / 5, groupSize);
+    for (let i in groupFlowerCoordinates) {
+        if (isInsideFlowerGroup(groupFlowerCoordinates[i])) {
+            circle(groupFlowerCoordinates[i].getX(), groupFlowerCoordinates[i].getY(), groupSize + offset);
+        }
+    }
+}
+
+function isInsideFlowerGroup(center) {
+    if (mouseX > center.getX() - groupSize / 2 &&
+        mouseX < center.getX() + groupSize / 2 &&
+        mouseY > center.getY() - groupSize / 2 &&
+        mouseY < center.getY() + groupSize / 2) {
+        return true;
+    }
+    return false;
 }

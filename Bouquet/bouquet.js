@@ -3,6 +3,8 @@ var scaleFlower = 0.15;
 var groupSize = 140;
 var colors = new Array(8);
 var bouquet;
+var frame
+var groupFlowerCoordinates;
 
 var dataLabels = [
   'Engaged in religious/spiritual activities',
@@ -17,12 +19,16 @@ var dataLabels = [
 
 var dataPercentages = [37.18, 76.49, 54.57, 55.14, 85.10, 62.12, 84.98, 74.58];
 
-function setup() {
-  createCanvas(1280, 650, P2D);
+function preload() {
+  frame = loadImage('data/frame.png');
+}
 
+function setup() {
+  createCanvas(1000, 650, P2D);
+  frame.resize(1000, 650);
   //colorMode(HSB, 360, 100, 100, 255);
 
-  var groupFlowerCoordinates = [new Coord(width / 2, height / 4), // top central
+  groupFlowerCoordinates = [new Coord(width / 2, height / 4), // top central
   new Coord(width / 2.5, height / 2), // middle left
   new Coord(width * 1.5 / 2.5, height / 2), // middle right
   new Coord(width / 3.5, height / 3.5), // top left
@@ -42,7 +48,9 @@ function setup() {
 
 
 function draw() {
-  background(150);
-  showCircles();
+  background(14, 38, 63); //dark blue
+  showCircle(30);
   drawBouquet(bouquet);
+  image(frame, 0, 0);
+
 }

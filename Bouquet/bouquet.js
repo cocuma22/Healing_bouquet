@@ -16,7 +16,7 @@ var dataLabels = [
   'Made a change to work situation',
   'Made a change to personal relationships',
   'Talked to friends or family',
-  'Took prescribed meditation',
+  'Took prescribed medication',
   'Spent time in nature/the outdoors',
   'Talked to mental health professional'
 ];
